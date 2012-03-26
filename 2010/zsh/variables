@@ -1,0 +1,8 @@
+# go language variables
+
+export GOROOT=$HOME/Scripts/go
+
+export GOOS=darwin
+export GOARCH=amd64
+
+export GOBIN=$HOME/Scripts/go/bin

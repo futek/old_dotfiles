@@ -1,0 +1,44 @@
+# generic parameters
+
+typeset -U path               # ensure that path array only contains unique entries
+path=(                        # extend current path array
+	/usr/local/bin
+	/usr/local/sbin
+	/usr/bin
+	/usr/sbin
+	/bin
+	/sbin
+	/usr/local/mysql/bin
+	$path
+)
+
+fpath=(                       # extend function path array
+	~/.zsh/functions
+	$fpath
+)
+
+EDITOR='mvim -f'              # define default text editor as MacVim
+
+WORDCHARS=${WORDCHARS:s#/#}   # remove "/" from the default word character string
+
+
+# history parameters
+
+HISTSIZE=1000                 # number of lines of history to keep within one session
+SAVEHIST=1000                 # number of lines of history to save
+HISTFILE=~/.history           # file to use for history
+
+
+# prompt parameters
+
+if [[ -n $SSH_CONNECTION ]]; then
+	PROMPT='%m:%3~%# '          # main prompt for ssh connections
+else
+	PROMPT='%3~%# '             # main prompt
+fi
+
+RPROMPT='%(?..(%?%))'         # shown at the right of the screen
+
+PS2='%_> '                    # shown when the shell is waiting for additional input
+PS3='?# '                     # shown within loops started with select
+PS4='+%N:%i> '                # shown when the XTRACE option is set

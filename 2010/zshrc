@@ -1,0 +1,13 @@
+# generic initialization
+
+. ~/.zsh/options              # load options
+. ~/.zsh/parameters           # load parameters
+. ~/.zsh/aliases              # load aliases
+. ~/.zsh/variables            # load variables
+. ~/.zsh/autoload             # load functions
+. ~/.zsh/bindings             # load bindings
+
+
+# additional initialization
+
+. ~/.zsh/additional           # load additional configuration

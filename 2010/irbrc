@@ -1,0 +1,78 @@
+#!/usr/bin/env ruby
+
+require 'irb/completion'
+require 'irb/ext/save-history'
+
+# Awesome Print
+
+begin
+  reqire 'ap'
+
+  IRB::Irb.class_eval do
+    def output_value
+      ap @context.last_value
+    end
+  end
+rescue LoadError
+end
+
+
+# Interactive editor
+
+begin
+  require 'interactive_editor'
+rescue LoadError
+end
+
+
+# history settings
+
+IRB.conf[:SAVE_HISTORY] = 1000
+IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
+
+
+# prompt settings
+
+IRB.conf[:PROMPT_MODE] = :SIMPLE
+
+
+# object methods
+
+class Object
+  # retrieve methods only defined for given subclass
+  def local_methods(obj = self)
+    (obj.methods - obj.class.superclass.instance_methods).sort
+  end
+  
+  # print ruby interactive reference for given class and method
+  def ri(method = nil)
+    unless method && method =~ /^[A-Z]/
+      klass = self.kind_of?(Class) ? name : self.class.name
+      method = [klass, method].compact.join('#')
+    end
+    puts `ri '#{method}'`
+  end
+end
+
+
+# clipboard functions
+
+def copy(string)
+  IO.popen('pbcopy', 'w') do |file|
+    file << string.to_s
+  end
+  
+  string
+end
+
+def paste
+  `pbpaste`
+end
+
+def copy_history
+  history = Readline::HISTORY.entries
+  index = history.rindex("exit") || -1
+  content = history[(index + 1)..-2].join("\n")
+  
+  puts copy(content)
+end

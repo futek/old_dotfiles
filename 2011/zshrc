@@ -1,0 +1,146 @@
+# generic options
+
+setopt NOMATCH
+setopt BAD_PATTERN
+setopt CORRECT
+setopt NO_CORRECT_ALL
+
+setopt BG_NICE
+setopt NOTIFY
+setopt HUP
+
+# generic parameters
+
+typeset -U path
+path=(
+  /usr/local/bin
+  /usr/local/sbin
+  /usr/local/mysql/bin
+  $path
+)
+
+typeset -U fpath
+fpath=(
+  ~/.zsh/functions
+  $fpath
+)
+
+EDITOR='mvim -f'
+WORDCHARS=${WORDCHARS:s#/#}
+
+# prompt options
+
+setopt PROMPT_PERCENT
+setopt NO_PROMPT_SUBST
+
+# prompt parameters
+
+if [[ -n $SSH_CONNECTION ]]; then
+  PROMPT='%m:%1~%# '
+else
+  PROMPT='%1~%# '
+fi
+
+RPROMPT='%(?..(%?%))'
+
+PS2='%_> '
+PS3='?# '
+PS4='+%N:%i'
+
+# history options
+
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_VERIFY
+
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt HIST_IGNORE_SPACE
+setopt HIST_NO_STORE
+
+setopt NO_HIST_BEEP
+
+# history parameters
+
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.history
+
+# completion options
+
+setopt NO_MENU_COMPLETE
+setopt AUTO_LIST
+
+setopt ALWAYS_LAST_PROMPT
+setopt ALWAYS_TO_END
+
+setopt NO_COMPLETE_ALIASES
+
+setopt AUTO_REMOVE_SLASH
+setopt AUTO_PARAM_SLASH
+setopt AUTO_PARAM_KEYS
+
+setopt COMPLETE_IN_WORD
+
+setopt LIST_TYPES
+
+setopt NO_LIST_BEEP
+
+# misc options
+
+setopt AUTO_CD
+setopt NO_CD_ABLE_VARS
+
+setopt LOCAL_OPTIONS
+setopt LOCAL_TRAPS
+
+setopt MULTIOS
+
+setopt NO_RM_STAR_SILENT
+
+# aliases
+
+alias ls='ls -F'
+alias l='ls -Ahl'
+alias ll='ls -l'
+alias la='ls -A'
+
+alias s='sudo'
+
+alias git='noglob git'
+alias g='git'
+
+# load functions
+
+autoload -U ~/.zsh/functions/*(:t)
+
+autoload -U compinit
+compinit
+
+zmodload zsh/complist
+
+autoload -U zmv
+
+# bindings
+
+bindkey -e
+bindkey '^[[3~' delete-char
+bindkey -M menuselect '^o' accept-and-infer-next-history
+
+# completion
+
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+# homebrew
+
+export CC='gcc-4.2'
+
+# ruby version manager
+
+if [[ -s "$HOME/.rvm/scripts/rvm" ]]  ; then source "$HOME/.rvm/scripts/rvm" ; fi
+
+# node
+
+export NODE_PATH='/usr/local/lib/node_modules'

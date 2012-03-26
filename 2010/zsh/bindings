@@ -1,0 +1,11 @@
+# generic bindings
+
+bindkey -e                    # set zsh line editor mode to Emacs
+
+bindkey '^[[3~' delete-char   # make the delete key function as expected
+
+
+# completion bindings
+
+# enter directories within completion list menu
+bindkey -M menuselect '^o' accept-and-infer-next-history

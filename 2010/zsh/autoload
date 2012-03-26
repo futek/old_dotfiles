@@ -1,0 +1,16 @@
+# custom functions
+
+autoload -U ~/.zsh/functions/*(:t)
+
+
+# completion functions
+
+autoload -U compinit          # load completion
+compinit                      # initialize completion
+
+zmodload zsh/complist         # load completion list menu
+
+
+# power functions
+
+autoload -U zmv               # load multiple move based on zsh pattern matching

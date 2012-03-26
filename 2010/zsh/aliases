@@ -1,0 +1,17 @@
+# ls aliases
+
+alias ls='ls -F'
+alias l='ls -Ahl'
+alias ll='ls -l'
+alias la='ls -A'
+
+
+# sudo aliases
+
+alias s='sudo'
+
+
+# misc aliases
+
+alias love='/Applications/Love.app/Contents/MacOS/love'
+alias sprunge='curl -s -F "sprunge=<-" http://sprunge.us | pbcopy && pbpaste'

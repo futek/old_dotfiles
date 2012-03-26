@@ -1,0 +1,7 @@
+set guifont=Menlo:h12
+colorscheme molokai
+
+set cursorline
+set listchars=tab:▸\ ,eol:¬
+
+set guioptions-=T

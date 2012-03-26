@@ -1,0 +1,89 @@
+filetype off
+
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
+if has("autocmd")
+  filetype plugin indent on
+endif
+
+set nocompatible
+
+set modelines=0
+
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+
+set encoding=utf-8
+set fileencoding=utf-8
+set scrolloff=3
+set autoindent
+set showmode
+set showcmd
+set hidden
+set wildmenu
+set wildmode=list:longest
+set visualbell
+set ttyfast
+set ruler
+set backspace=indent,eol,start
+set laststatus=2
+set relativenumber
+
+let mapleader = ","
+
+set ignorecase
+set smartcase
+set gdefault
+set incsearch
+set showmatch
+
+set wrap
+set textwidth=79
+set formatoptions=qrn1
+set colorcolumn=85
+
+set nolist
+
+set foldmethod=syntax
+set foldnestmax=10
+set nofoldenable
+set foldlevel=0
+
+if has("mouse")
+  set mouse=a
+endif
+
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+endif
+
+map  <C-h> <C-w>h
+map  <C-j> <C-w>j
+map  <C-k> <C-w>k
+map  <C-l> <C-w>l
+
+nnoremap <tab> %
+vnoremap <tab> %
+
+nnoremap <leader>l :set list!<CR>
+nnoremap <leader>s :set spell!<CR>
+
+nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<CR>
+nnoremap <leader>f :NERDTreeToggle<CR>
+nnoremap <leader>a :buffer #<CR>
+
+nnoremap <silent> <leader>S :call <SID>StripTrailingWhitespaces()<CR>
+function <SID>StripTrailingWhitespaces()
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  let @/=_s
+  call cursor(l, c)
+endfunction
+

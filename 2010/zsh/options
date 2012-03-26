@@ -1,0 +1,74 @@
+# generic options
+
+setopt NOMATCH                # print error message when a pattern have no matches
+setopt BAD_PATTERN            # print error message when a pattern isn't properly formatted
+
+setopt BG_NICE                # run background jobs at a lower priority
+setopt NO_NOTIFY              # don't notify of finished background jobs
+
+setopt HUP                    # end (SIGHUP) background jobs on exit
+
+setopt LOCAL_OPTIONS          # allow functions to define local options
+setopt LOCAL_TRAPS            # allow functions to define local traps
+
+setopt NO_RM_STAR_SILENT      # prompt for confirmation when an rm command argument includes a star
+
+
+# history options
+
+setopt HIST_VERIFY            # print substituted bang-history on a new prompt before executing
+
+setopt INC_APPEND_HISTORY     # append history as commands are executed
+setopt SHARE_HISTORY          # share history across all shells
+
+setopt EXTENDED_HISTORY       # save timestamps along commands in history
+
+setopt HIST_IGNORE_ALL_DUPS   # ignore all duplicates in history
+
+setopt HIST_REDUCE_BLANKS     # tidy up lines before they're saved in history
+
+setopt HIST_IGNORE_SPACE      # don't save commands that start with a space in history
+setopt HIST_NO_STORE          # dont' save history and fc commands in history
+
+setopt NO_HIST_BEEP           # don't beep when scrolling beyond boundaries of history list
+
+
+# prompt options
+
+setopt PROMPT_PERCENT         # substitude percent escapes in prompt varibles
+setopt NO_PROMPT_SUBST        # don't substitude parameters in prompt variables
+
+
+# completion options
+
+setopt NO_LIST_BEEP           # don't beep on ambiguous completions
+setopt NO_MENU_COMPLETE       # don't insert completions immediately
+setopt AUTO_LIST              # use menu completion after the second consecutive request for completion
+
+setopt ALWAYS_LAST_PROMPT     # take cursor back after listing a completion
+
+setopt NO_COMPLETE_ALIASES    # don't expand aliases for completion
+
+setopt AUTO_REMOVE_SLASH      # remove completed trailing "/" and "=" on space and certain commands
+
+setopt AUTO_PARAM_SLASH       # append "/" to completed parameters whose value is the name of a directory
+setopt AUTO_PARAM_KEYS        # remove space after completed parameter if next character is likely to index it
+
+setopt COMPLETE_IN_WORD       # allow for completion inside words
+
+setopt ALWAYS_TO_END          # move cursor to the end of the word after it's completed
+
+setopt LIST_TYPES             # show type of items in completion lists with "/", "*" and "@"
+
+
+# power options
+
+setopt AUTO_CD                # cd into given directory if it doesn't exist as a command
+setopt NO_CD_ABLE_VARS        # don't expand parameters given by name for use with AUTO_CD
+
+setopt EXTENDED_GLOB          # enable advanced patterns
+
+setopt MULTIOS                # enable multiple redirections
+
+setopt CORRECT                # enable command spelling correction
+setopt NO_CORRECT_ALL         # disable correction of command arguments 

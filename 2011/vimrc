@@ -1,0 +1,74 @@
+call pathogen#infect()
+call pathogen#helptags()
+
+set nocompatible
+syntax on
+filetype plugin indent on
+
+set encoding=utf-8
+set fileencoding=utf-8
+set nobomb
+
+set backspace=indent,eol,start
+set formatoptions-=r
+set formatoptions-=o
+
+set autoindent
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+
+set nolist
+set nospell
+set nowrap
+
+set number
+set ruler
+set showcmd
+set showmode
+
+set gdefault
+set hlsearch
+set ignorecase
+set incsearch
+set showmatch
+set smartcase
+
+set foldlevel=0
+set foldmethod=syntax
+set foldnestmax=10
+set nofoldenable
+
+set wildmenu
+set wildmode=full
+
+set ttyfast
+set visualbell
+
+if has("mouse")
+  set mouse=a
+endif
+
+let mapleader = ","
+
+nnoremap <Tab> %
+vnoremap <Tab> %
+
+nnoremap / /\v
+vnoremap / /\v
+nnoremap ? ?\v
+vnoremap ? ?\v
+cnoremap s/ s/\v
+
+noremap à `a
+noremap è `e
+noremap ì `i
+noremap ò `o
+noremap ù `u
+
+nnoremap <Leader>l :set list!<CR>
+nnoremap <Leader>s :set spell!<CR>
+nnoremap <Leader>w :set wrap!<CR>
+
+nnoremap <Leader><Space> :nohl<CR>
