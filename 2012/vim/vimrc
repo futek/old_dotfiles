@@ -1,0 +1,91 @@
+set nocompatible
+syntax on
+filetype off
+
+set shell=/bin/sh
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+" color schemes
+Bundle 'molokai'
+Bundle 'Wombat'
+
+" syntaxes
+Bundle 'fish.vim'
+Bundle 'othree/html5.vim'
+Bundle 'jade.vim'
+Bundle 'wavded/vim-stylus'
+
+" snipmate
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'snipmate-snippets'
+Bundle 'garbas/vim-snipmate'
+
+" sparkup
+Bundle 'rstacruz/sparkup', {'rtp': 'vim'}
+
+filetype plugin indent on
+
+let mapleader = ","
+
+" avoid shift
+noremap <Space> :
+
+" sudo workaround
+cmap w!! %!sudo tee > /dev/null %
+
+" quick vimrc edit
+nmap <Leader>ev :e $MYVIMRC<CR>
+nmap <Leader>sv :so $MYVIMRC<CR>
+
+" toggles
+nmap <Leader>l :set list!<CR>
+nmap <Leader>s :set spell!<CR>
+nmap <Leader>w :set wrap!<CR>
+
+" search
+set hlsearch
+set ignorecase
+set smartcase
+set incsearch
+set showmatch
+nmap <Leader><Space> :nohlsearch<CR>
+nohlsearch
+
+" buffers
+nmap <Leader>a :buffer #<CR>
+
+" indentation
+set tabstop=2
+set shiftwidth=2
+set noexpandtab
+set autoindent
+
+" visuals
+set ruler
+set showcmd
+set nowrap
+set relativenumber
+set visualbell
+set listchars=eol:¬,tab:▸\ ,trail:•,nbsp:%,extends:▶,precedes:◀
+set wildmenu
+
+" disable swap and backup files
+set nobackup
+set noswapfile
+
+" disable modelines
+set modelines=0
+
+" highlight unwanted whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()

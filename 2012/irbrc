@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+# prompt settings
+IRB.conf[:PROMPT_MODE] = :SIMPLE
+
+# history settings
+IRB.conf[:SAVE_HISTORY] = 1000
+IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
+
+# object methods
+class Object
+	# retrieve methods only defined for given subclass
+	def local_methods(obj = self)
+		(obj.methods - obj.class.superclass.instance_methods).sort
+	end
+end
+
+# clipboard functions
+def copy(string)
+	IO.popen('pbcopy', 'w') do |file|
+		file << string.to_s
+	end
+
+	string
+end
+
+def paste
+	`pbpaste`
+end
+
+def copy_history
+	history = Readline::HISTORY.entries
+	index = history.rindex("exit") || -1
+	content = history[(index + 1)..-2].join("\n")
+
+	puts copy(content)
+end

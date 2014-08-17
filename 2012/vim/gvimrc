@@ -1,0 +1,11 @@
+" disable toolbar
+set guioptions-=T
+
+" color scheme
+color wombat
+
+" font
+let fontfamily = 'Menlo'
+let fontsize = '12'
+let &guifont = fontfamily . ':h' . fontsize
+nmap <silent> <Leader>0 :<C-U>let &guifont = fontfamily . ':h' . (v:count ? v:count : fontsize)<CR>
